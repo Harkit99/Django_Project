@@ -1,10 +1,11 @@
 from django.shortcuts import render,redirect # HTML Rendering Or Redirecting
 from .models import Portfolio,Details # Calling Tables form DataBase
-from django.contrib.auth.models import User # calling built in user model
+from django.contrib.auth.models import User,Group # calling built in user model
 from django.contrib.auth.views import login_required# Login Security
 from django.contrib import auth # Importing Authentication....
 from django.views.decorators.csrf import csrf_exempt
-
+from rest_framework import viewsets
+from main.serializers import UserSerializer, GroupSerializer,PortfolioSerializer,DetailsSerializer
 @csrf_exempt
 def home(request):
     if request.method == 'POST':
@@ -112,3 +113,33 @@ def session(request):
 def displayportfolio(request,id):
     q = Portfolio.objects.get(id=id)
     return render(request,'main/displayportfolio.html',{'value':q})
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserSerializer
+
+class GroupViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+
+class PortfolioViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Portfolio.objects.all()
+    serializer_class = PortfolioSerializer
+
+
+class DetailsViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Details.objects.all()
+    serializer_class = DetailsSerializer

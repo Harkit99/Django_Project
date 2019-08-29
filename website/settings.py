@@ -13,13 +13,14 @@ SECRET_KEY = 'r&v4#mrl9v%0jo-jl=#vz1qhbi@2&&sqmhcax#pf%05*!b@ie@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'main',
+    'rest_framework',
     'django.contrib.admin',
    'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -58,7 +59,10 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'website.wsgi.application'
 
-
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 

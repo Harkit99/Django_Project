@@ -1,5 +1,16 @@
-from django.urls import path
-from . import views
+from django.urls import path,include
+from rest_framework import routers
+from main import views
+
+
+
+router = routers.DefaultRouter()
+router.register(r'users', views.UserViewSet)
+router.register(r'groups', views.GroupViewSet)
+router.register(r'portfolio', views.PortfolioViewSet)
+
+router.register(r'details', views.DetailsViewSet)
+
 
 urlpatterns = [
     path('',views.home,name='home'),
@@ -14,5 +25,6 @@ urlpatterns = [
     path('updatedetail/<int:id>',views.updatedetail),
     path('deletedetail/<int:id>',views.deletedetail),
     path('session/',views.session,name='session'),
-    path('displayportfolio/<int:id>',views.displayportfolio)
+    path('displayportfolio/<int:id>',views.displayportfolio),
+    path('auth-api/', include(router.urls)),
 ]

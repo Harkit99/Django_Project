@@ -2,18 +2,17 @@ from django.urls import path,include
 from rest_framework import routers
 from main import views
 
-
-
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'groups', views.GroupViewSet)
 router.register(r'portfolio', views.PortfolioViewSet)
-
 router.register(r'details', views.DetailsViewSet)
 
 
 urlpatterns = [
     path('',views.home,name='home'),
+    path('abc',views.abc),
+    path('ajax/',views.ajax),
     path('login/',views.signup,name='signup'),
     path('Courses/',views.Courses,name='Courses'),
     path('contact/',views.contact,name='contact'),

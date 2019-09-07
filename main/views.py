@@ -27,7 +27,7 @@ def signup(request):
             return render(request,'main/signup.html',{'error':'Username or Password is InCorrect'})
     return render(request,'main/signup.html',None)
 
-@login_required
+
 def Courses(request):
     return render(request,'main/Courses.html')
 
@@ -36,8 +36,16 @@ def contact(request):
     return render(request,'main/contact.html',{"value":name})
 
 def registration(request):
-    name='Harkit'
-    return render(request,'main/registration.html',{"value":name})
+    if request.method =='POST':
+        values=registration()
+        values.fname=request.POST['fname']
+        values.lname=request.POST['lname']
+        values.email=request.POST['email']
+        values.city=request.POST['city']
+        values.password=request.POST['password']
+        values.save()
+        values.user=request.user
+    return render(request,'main/registration.html')
 
 
 def display(request):
@@ -113,6 +121,15 @@ def session(request):
 def displayportfolio(request,id):
     q = Portfolio.objects.get(id=id)
     return render(request,'main/displayportfolio.html',{'value':q})
+
+def abc(request):
+    return render(request,'main/abc.html',None)
+
+
+
+def ajax(request):
+    value = Portfolio.objects.all()
+    return render(request,'main/ajax.html',{'values':value})
 
 
 class UserViewSet(viewsets.ModelViewSet):

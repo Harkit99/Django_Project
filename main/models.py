@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.auth.hashers import mask_hash
 
 # Create your models here. It works on ORM(object relational mapping)
 class Details(models.Model):
@@ -31,3 +32,9 @@ class Portfolio(models.Model):
     class Meta:
         ordering = ['-time']
 
+class Register(models.Model):
+    fname=models.CharField(max_length=50)
+    lname=models.CharField(max_length=25)
+    email=models.EmailField(max_length=75)
+    city=models.CharField(max_length=30)
+    createpass=models.CharField(max_length=50)

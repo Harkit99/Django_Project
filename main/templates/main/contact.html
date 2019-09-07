@@ -2,9 +2,45 @@
 {% block head %}
     <title>Contact Us</title>
 {% endblock %}
-{% block content %}<br><br><br>
-<!DOCTYPE html>
+{% block content %}
 {% load static %}
-<html>
-</html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Allerta+Stencil">
+<style>
+.w3-allerta {
+  font-family: "Allerta Stencil", Sans-serif;
+}
+</style>
+</head>
+<body>
+<div class="w3-container w3-black w3-center w3-allerta">
+  <p class="w3-xxxlarge">Our Address</p>
+</div>
+<center><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3501.955219520741!2d77.08047981508257!3d28.6311041824184!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d04be0af4146b%3A0xbb67ed3386d8f508!2sNIIT!5e0!3m2!1sen!2sin!4v1517560856805" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe></center>
+<script>
+var geo=document.getElementById("p");
+function getLocation()
+{
+if (navigator.geolocation)
+{
+navigator.geolocation.getWatchPosition(getPosition);
+}
+else
+{
+geo.innerHTML="Geolocation is not supported by this browser.";
+}
+}
+function getPosition(position)
+{
+geo.innerHTML="Latitude" + position.coords.latitude + "<BR>Longitude: " + position.coords.longitude;
+}
+</script>
+<footer style="display: block;">
+  <p>Our Address: B-1/ 624, Najafgarh Road, Janak Puri, New Delhi, Delhi 110058</p>
+  <p>Email ID:  <a href="mailto:someone@example.com">
+  coderspoint@gmail.com</a>.</p>
+</footer>
+</body>
 {% endblock %}

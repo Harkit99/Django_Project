@@ -2,9 +2,68 @@
 {% block head %}
     <title>Courses</title>
 {% endblock %}
-{% block content %}<br><br><br>
+{% block content %}
 <!DOCTYPE html>
 {% load static %}
 <html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+<center><h2>Courses And Fees</h2></center>
+<table>
+  <tr>
+    <th>Course</th>
+    <th>Fee</th>
+    <th>Time</th>
+  </tr>
+  <tr>
+    <td>Python</td>
+    <td>8,000</td>
+    <td>4 Weeks</td>
+  </tr>
+  <tr>
+    <td>Django</td>
+    <td>9,0000</td>
+    <td>4 Weeks</td>
+  </tr>
+  <tr>
+    <td>Core Java</td>
+    <td>12,000</td>
+    <td>8 Weeks</td>
+  </tr>
+  <tr>
+    <td>Advance Java</td>
+    <td>8,000</td>
+    <td>6 Weeks</td>
+  </tr>
+  <tr>
+    <td>C++</td>
+    <td>6,000</td>
+    <td>6 Weeks</td>
+  </tr>
+  <tr>
+    <td>Sql</td>
+    <td>6,000</td>
+    <td>4 Weeks</td>
+  </tr>
+</table>
+</body>
 </html>
 {% endblock %}
